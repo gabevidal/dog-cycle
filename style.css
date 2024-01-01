@@ -1,34 +1,3 @@
-bHere are the contents of the updated HTML and CSS files:
-
-**HTML File:**
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Dog Age & Zodiac Converter</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <img src="logo.png" alt="Logo" class="logo">
-        <h2>Dog Age & Zodiac Converter</h2>
-        <p>This tool converts a dog's age to its equivalent in human years and provides its position in the dog zodiac cycle. The dog zodiac cycle consists of seven years, each corresponding to a specific letter and number in the sequence. In this system, a typical year is divided into seven dog years, each consisting of 52 days, except the last dog year, which has 53 days. During leap years, the last dog year extends to 54 days, aligning with the additional day in the human calendar.</p>
-        <label for="dogBirthday">Enter your dog's birthday (MM-DD-YYYY):</label><br>
-        <input type="text" id="dogBirthday" name="dogBirthday"><br>
-        <button onclick="calculateDogInfo()">Calculate</button><br><br>
-        <p id="zodiacResult"></p>
-        <p id="ageResult"></p>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
-```
-
-**CSS File:**
-
-```css
 body {
     font-family: Arial, sans-serif;
     background-color: #f7f7f7;
@@ -77,11 +46,8 @@ h2 {
     margin-bottom: 20px;
 }
 .logo {
-    width: 700px;
-    height: 700px;
+    max-width: 100%;
+    height: auto;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 20px;
 }
-```
-
-These are the current contents of your HTML and CSS files.
