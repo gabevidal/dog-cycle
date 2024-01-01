@@ -1,16 +1,58 @@
 <!DOCTYPE html>
-
 <html>
 <head>
     <title>Dog Age & Zodiac Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h2>Dog Age & Zodiac Converter</h2>
-    <label for="dogBirthday">Enter your dog's birthday (MM-DD-YYYY):</label><br>
-    <input type="text" id="dogBirthday" name="dogBirthday"><br>
-    <button onclick="calculateDogInfo()">Calculate</button><br><br>
-    <p id="zodiacResult"></p>
-    <p id="ageResult"></p>
+    <div class="container">
+        <h2>Dog Age & Zodiac Converter</h2>
+        <label for="dogBirthday">Enter your dog's birthday (MM-DD-YYYY):</label><br>
+        <input type="text" id="dogBirthday" name="dogBirthday"><br>
+        <button onclick="calculateDogInfo()">Calculate</button><br><br>
+        <p id="zodiacResult"></p>
+        <p id="ageResult"></p>
+    </div>
 
     <script>
         function parseDate(input) {
