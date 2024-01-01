@@ -45,3 +45,9 @@ button:hover {
 h2 {
     margin-bottom: 20px;
 }
+.logo {
+    width: 700px;
+    height: 700px;
+    display: block;
+    margin: 0 auto;
+}
