@@ -46,8 +46,9 @@ h2 {
     margin-bottom: 20px;
 }
 .logo {
-    max-width: 400px;
-    height: auto;
+    max-width: 100%;  /* Scales down if too large */
+    min-width: 150px; /* Minimum width, adjust as needed */
+    height: auto;     /* Maintain aspect ratio */
     display: block;
-    margin: 0 auto 20px;
-}
+    margin: 0 auto 20px; /* Center the logo with margin */
+}
