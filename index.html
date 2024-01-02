@@ -3,12 +3,11 @@
 <head>
     <title>Dog Age & Zodiac Converter</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="script.js"></script>
 </head>
 <body onload="showCurrentDogDate()">
     <div class="container">
         <img src="logo.jpeg" alt="Logo" class="logo">
-        <p id="currentDogDate" class="current-date"></p> <!-- This displays the current dog date -->
+        <p id="currentDogDate" class="current-date"></p> <!-- Display current dog date -->
         <h2>Dog Age & Zodiac Converter</h2>
         <p>Welcome to the Dog Age & Zodiac Converter. This tool helps you convert your dog's age into human years and reveals their position in the dog zodiac cycle. Our converter takes into account the unique pattern of dog years, where each year is usually 52 days long, except for the last year of the cycle, which is 53 days.</p>
         
@@ -46,6 +45,9 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- JavaScript files -->
+    <script src="dateUtils.js"></script>
+    <script src="uiHandlers.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
