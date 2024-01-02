@@ -19,19 +19,13 @@ function humanToDogZodiac(date) {
 
     const startOfYear = new Date(date.getFullYear(), 0, 1);
     const daysPassed = Math.floor((date - startOfYear) / (1000 * 60 * 60 * 24));
-
-    const dogYearData = [
-        { name: "The Adventurer", length: 52 },
-        { name: "The Braveheart", length: 52 },
-        // ... other dog years ...
-        { name: "The Guardian", length: 53 }
-    ];
+    const dogYearLengths = [52, 52, 52, 52, 52, 52, 53];
 
     let dayCount = 0;
-    for (let i = 0; i < dogYearData.length; i++) {
-        dayCount += dogYearData[i].length;
+    for (let i = 0; i < dogYearLengths.length; i++) {
+        dayCount += dogYearLengths[i];
         if (daysPassed < dayCount) {
-            return { yearName: dogYearData[i].name, day: daysPassed - (dayCount - dogYearData[i].length) + 1 };
+            return { year: i + 1, day: daysPassed - (dayCount - dogYearLengths[i]) + 1 };
         }
     }
 }
@@ -62,29 +56,35 @@ function togglePassingDateField() {
 function calculateDogInfo() {
     const dogName = document.getElementById("dogName").value || "Your dog";
     const dogBirthdayStr = document.getElementById("dogBirthday").value;
-    const dogPassingDateStr = document.getElementById("dogPassingDate").value;
-
     const dogBirthday = parseDate(dogBirthdayStr);
-    const dogPassingDate = parseDate(dogPassingDateStr);
 
     if (!dogBirthday) {
         document.getElementById("zodiacResult").innerHTML = "Please enter a valid birthday.";
         return;
     }
 
+    const today = new Date();
+    const ageInDays = Math.floor((today - dogBirthday) / (1000 * 60 * 60 * 24));
+    const ageInDogYears = Math.floor(ageInDays / 52); // Assuming each dog year is 52 days
+    const ageInDogDays = ageInDays % 52;
+
     const zodiacInfo = humanToDogZodiac(dogBirthday);
     const birthDayOrdinal = ordinalSuffix(zodiacInfo.day);
-    const birthZodiacText = `${dogName} was born on the ${birthDayOrdinal} day of the year ${zodiacInfo.yearName}.`;
 
-    const endDate = dogPassingDate || new Date();
-    const ageInDays = Math.floor((endDate - dogBirthday) / (1000 * 60 * 60 * 24));
-    const ageInHumanYears = Math.floor(ageInDays / 365);
-    const ageResultText = dogPassingDate ? 
-        `${dogName} lived for ${ageInHumanYears} human years.` :
-        `${dogName} is ${ageInHumanYears} human years old.`;
+    // Map of year numbers to names
+    const yearNames = ["The Adventurer", "The Braveheart", "The Companion", "The Dreamer", "The Explorer", "The Faithful", "The Guardian"];
+    const yearName = yearNames[(zodiacInfo.year - 1) % yearNames.length];
+
+    const birthZodiacText = `${dogName} was born on the ${birthDayOrdinal} day of the ${yearName} year in the cycle.`;
+    const ageText = `${dogName} is ${ageInDogYears} dog years and ${ageInDogDays} dog days old.`;
+
+    const nextDogYear = (zodiacInfo.year % 7) + 1; // Assuming a 7-year cycle
+    const nextYearName = yearNames[nextDogYear - 1];
+    const nextBirthdayText = `The next birthday of ${dogName} in dog years will be in the year ${nextYearName}.`;
 
     document.getElementById("zodiacResult").innerHTML = birthZodiacText;
-    document.getElementById("ageResult").innerHTML = ageResultText;
+    document.getElementById("ageResult").innerHTML = ageText;
+    document.getElementById("nextDogBirthday").innerHTML = nextBirthdayText;
 }
 
 function showCurrentDogDate() {
@@ -92,7 +92,7 @@ function showCurrentDogDate() {
     const currentZodiacInfo = humanToDogZodiac(today);
     if (currentZodiacInfo) {
         const currentDayOrdinal = ordinalSuffix(currentZodiacInfo.day);
-        document.getElementById("currentDogDate").innerHTML = `Today is the ${currentDayOrdinal} day of the year ${currentZodiacInfo.yearName}.`;
+        document.getElementById("currentDogDate").innerHTML = `Today is the ${currentDayOrdinal} day of the ${currentZodiacInfo.year} year in the cycle.`;
     }
 }
 
@@ -101,4 +101,4 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("togglePassingDate").addEventListener("click", togglePassingDateField);
 });
 
-console.log("JavaScript end.");
+console.log("JavaScript end.");d.");
