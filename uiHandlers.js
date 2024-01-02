@@ -12,6 +12,8 @@ function showCurrentDogDate() {
     const currentZodiacInfo = humanToDogZodiac(today);
     if (currentZodiacInfo) {
         const currentDayOrdinal = ordinalSuffix(currentZodiacInfo.day);
-        document.getElementById("currentDogDate").innerHTML = `Today is the ${currentDayOrdinal} day of the ${currentZodiacInfo.year} year in the cycle.`;
+        const currentYearName = getDogYearName(currentZodiacInfo.year);
+
+        document.getElementById("currentDogDate").innerHTML = `Today is the ${currentDayOrdinal} day of the ${currentYearName} year in the dog zodiac cycle.`;
     }
 }
