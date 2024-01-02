@@ -4,7 +4,7 @@ function parseDate(input) {
         return new Date(); // or handle the error as needed
     }
 
-    var parts = input.match(/(\\d{1,2})-(\\d{1,2})-(\\d{4})/);
+    var parts = input.match(/(\d{1,2})-(\d{1,2})-(\d{4})/);
     if (!parts) {
         console.error('Invalid date format. Expected MM-DD-YYYY or M-D-YYYY.');
         return new Date(); // or handle the error as needed
