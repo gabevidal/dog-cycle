@@ -35,6 +35,7 @@ function formatDate(date) {
 }
 
 function calculateDogInfo() {
+console.log('what');
     const dogBirthdayStr = document.getElementById("dogBirthday").value;
     const dogBirthday = parseDate(dogBirthdayStr);
     const today = new Date();
