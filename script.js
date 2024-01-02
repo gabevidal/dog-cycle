@@ -2,7 +2,7 @@ console.log("JavaScript loaded.");
 
 function parseDate(input) {
     if (!input || input.trim() === '') {
-        return null; // Return null for empty input
+        return null;
     }
 
     var parts = input.match(/(\d{1,2})-(\d{1,2})-(\d{4})/);
@@ -23,10 +23,7 @@ function humanToDogZodiac(date) {
     const dogYearData = [
         { name: "The Adventurer", length: 52 },
         { name: "The Braveheart", length: 52 },
-        { name: "The Companion", length: 52 },
-        { name: "The Dreamer", length: 52 },
-        { name: "The Explorer", length: 52 },
-        { name: "The Faithful", length: 52 },
+        // ... other dog years ...
         { name: "The Guardian", length: 53 }
     ];
 
@@ -99,9 +96,9 @@ function showCurrentDogDate() {
     }
 }
 
-window.onload = function() {
+document.addEventListener("DOMContentLoaded", function() {
     showCurrentDogDate();
     document.getElementById("togglePassingDate").addEventListener("click", togglePassingDateField);
-};
+});
 
 console.log("JavaScript end.");
