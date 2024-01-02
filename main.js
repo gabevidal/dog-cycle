@@ -1,36 +1,30 @@
-document.addEventListener("DOMContentLoaded", function() {
-    showCurrentDogDate();
-    document.getElementById("togglePassingDate").addEventListener("click", togglePassingDateField);
-});
-function calculateDogInfo() {
-    const dogNameInput = document.getElementById("dogName").value;
-    const dogName = dogNameInput || "Your dog";
-    const userSuppliedDogBirthdayStr = document.getElementById("dogBirthday").value;
-    const userSuppliedDogBirthday = parseDate(userSuppliedDogBirthdayStr);
-
-    if (!userSuppliedDogBirthday) {
-        document.getElementById("zodiacResult").innerHTML = "Please enter a valid birthday.";
-        return;
-    }
-
-    const todayDate = new Date();
-    const dogZodiacInfoOnBirthday = humanToDogZodiac(userSuppliedDogBirthday);
-    const dogYearOnBirthday = dogZodiacInfoOnBirthday.year;
-    const dogDayOfYearOnBirthday = dogZodiacInfoOnBirthday.day;
-    const dogYearNameOnBirthday = getDogYearName(dogYearOnBirthday);
-
-    const daysUntilNextDogYearBirthday = calculateDaysUntilNextDogBirthday(dogYearOnBirthday, dogDayOfYearOnBirthday);
-    const humanDateForNextDogYearBirthday = calculateHumanDateForNextDogBirthday(todayDate, daysUntilNextDogYearBirthday);
-
-    // Determine the dog year of the next birthday using the human date
-    const nextDogBirthdayZodiacInfo = humanToDogZodiac(humanDateForNextDogYearBirthday);
-    const nextDogBirthdayYear = nextDogBirthdayZodiacInfo.year;
-    const nextDogYearName = getDogYearName(nextDogBirthdayYear);
-    
-    // Calculate the dog's age in dog years
-   const dogAgeInDogYears = calculateDogAgeInDogYears(userSuppliedDogBirthday, todayDate);
-
-    // Display results
-    document.getElementById("zodiacResult").innerHTML = `${dogName} was born on the ${ordinalSuffix(dogDayOfYearOnBirthday)} day of the ${dogYearNameOnBirthday} year in the dog zodiac cycle. ${dogName} is ${dogAgeInDogYears} dog years old.`;
-    document.getElementById("nextDogBirthday").innerHTML = `The next birthday of ${dogName} will be on the ${ordinalSuffix(dogDayOfYearOnBirthday)} day of the ${nextDogYearName} year in the dog zodiac cycle, which is in ${daysUntilNextDogYearBirthday} days. This approximately corresponds to the human date ${humanDateForNextDogYearBirthday.toLocaleDateString()}.`;
+function loadHTML(url, id, callback) {
+    fetch(url)
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById(id).innerHTML += data;
+        if (callback) {
+            callback();
+        }
+    })
+    .catch(error => console.error('Error loading the HTML section:', error));
 }
+
+function loadSections() {
+    loadHTML('headerSection.html', 'mainContainer', function() {
+        // Callback after header section is loaded, if needed
+    });
+    loadHTML('calendarReadingSection.html', 'mainContainer', function() {
+        // Callback after calendar reading section is loaded, if needed
+    });
+    loadHTML('dogZodiacInfoSection.html', 'mainContainer', setUpEventListeners);
+}
+
+function setUpEventListeners() {
+    // Set up event listeners here
+    // Example: 
+    document.getElementById("togglePassingDate").addEventListener("click", togglePassingDateField);
+    showCurrentDogDate();
+}
+
+window.onload = loadSections; // Call loadSections when the window loads

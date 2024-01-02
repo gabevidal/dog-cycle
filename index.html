@@ -2,83 +2,18 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Dog Age & Zodiac Converter</title>
+    <title>Dog Age & Zodiac Explorer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body onload="showCurrentDogDate()">
-    <div class="container">
-        <header>
-            <img src="logo.jpeg" alt="Header Image" class="header-image">
-        </header>
-        <div id="welcome-text">
-            <h2>Dog Age & Zodiac Converter</h2>
-            <p>Welcome to the Dog Age & Zodiac Converter. This journey offers a profound insight into the passage of time in a dog's life, fostering a deeper bond:</p>
-            <ul>
-                <li>Experience the world through their eyes, where each year for us unfolds as seven for them. This natural rhythm brings us closer to their experience, allowing us to celebrate and honor each of their birthdays with the reverence it deserves, every 52 days.</li>
-                <li>Through the dog zodiac, we gain insight into the distinct cycle of time as experienced by dogs, acknowledging their unique place and significance in the tapestry of life.</li>
-            </ul>
-            <p>Embrace this opportunity to connect with and celebrate every moment of your dog's life, enriching the shared journey with reverence and joy.</p>
-        </div>
-
-        <label for="dogName">Dog's Name (optional):</label><br>
-        <input type="text" id="dogName" name="dogName"><br>
-
-        <label for="dogBirthday">Dog's Birthday (MM-DD-YYYY):</label><br>
-        <input type="text" id="dogBirthday" name="dogBirthday"><br>
-
-        <button type="button" id="togglePassingDate">Add Date of Dog's Passing</button><br>
-
-        <div id="passingDateField" style="display:none;">
-            <label for="dogPassingDate">Date of Dog's Passing (optional, MM-DD-YYYY):</label><br>
-            <input type="text" id="dogPassingDate" name="dogPassingDate"><br>
-        </div>
-
-        <button onclick="calculateDogInfo()">Calculate</button><br><br>
-
-        <p id="zodiacResult"></p>
-        <p id="ageResult"></p>
-        <p id="dogAgeInDogYears"></p>
-        <p id="nextDogBirthday"></p>
-
-        <div id="dogZodiacInfo">
-            <h3>Dog Celestial Signs</h3>
-            <ul>
-                <li>
-                    <b>The Adventurer</b> <span class="date">Jan 1 - Feb 21</span>
-                    <p>Energetic and curious, always ready for a new challenge or exploration.</p>
-                </li>
-                <li>
-                    <b>The Braveheart</b> <span class="date">Feb 22 - Apr 14</span>
-                    <p>Courageous and loyal, acting as protectors and devoted companions.</p>
-                </li>
-                <li>
-                    <b>The Companion</b> <span class="date">Apr 15 - Jun 5</span>
-                    <p>Excels in empathy and affection, providing comfort and friendship like no other.</p>
-                </li>
-                <li>
-                    <b>The Dreamer</b> <span class="date">Jun 6 - Jul 28</span>
-                    <p>Thoughtful and introspective, often seen gazing into the distance or enjoying peaceful moments.</p>
-                </li>
-                <li>
-                    <b>The Explorer</b> <span class="date">Jul 29 - Sep 19</span>
-                    <p>Full of curiosity and a sense of adventure, always eager to discover new places and smells.</p>
-                </li>
-                <li>
-                    <b>The Faithful</b> <span class="date">Sep 20 - Nov 10</span>
-                    <p>The epitome of loyalty, offering unwavering support and companionship to their loved ones.</p>
-                </li>
-                <li>
-                    <b>The Guardian</b> <span class="date">Nov 11 - Dec 31</span>
-                    <p>Natural protectors, known for their alertness and strong sense of duty towards their families.</p>
-                </li>
-            </ul>
-        </div>
+<body onload="loadSections()">
+    <div class="container" id="mainContainer">
+        <!-- The content of this container will be loaded dynamically -->
     </div>
 
-    <!-- JavaScript files -->
     <script src="dateUtils.js"></script>
     <script src="uiHandlers.js"></script>
+    <script src="dogInfoCalculations.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

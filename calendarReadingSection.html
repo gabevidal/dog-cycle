@@ -1,0 +1,17 @@
+<div id="calendar-reading-section" class="section">
+    <h2>Calendar and Reading</h2>
+    <label for="dogName">Dog's Name (optional):</label><br>
+    <input type="text" id="dogName" name="dogName"><br>
+    <label for="dogBirthday">Dog's Birthday (MM-DD-YYYY):</label><br>
+    <input type="text" id="dogBirthday" name="dogBirthday"><br>
+    <button type="button" id="togglePassingDate">Add Date of Dog's Passing</button><br>
+    <div id="passingDateField" style="display:none;">
+        <label for="dogPassingDate">Date of Dog's Passing (optional, MM-DD-YYYY):</label><br>
+        <input type="text" id="dogPassingDate" name="dogPassingDate"><br>
+    </div>
+    <button onclick="calculateDogInfo()">Perform Reading</button><br><br>
+    <p id="zodiacResult"></p>
+    <p id="ageResult"></p>
+    <p id="dogAgeInDogYears"></p>
+    <p id="nextDogBirthday"></p>
+</div>
