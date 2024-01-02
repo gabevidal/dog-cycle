@@ -17,7 +17,7 @@ function humanToDogZodiac(date) {
 
     const startOfYear = new Date(date.getFullYear(), 0, 1);
     const daysPassed = Math.floor((date - startOfYear) / (1000 * 60 * 60 * 24));
-    const dogYearLengths = [52, 52, 52, 52, 52, 52, 53]; // Adjust for leap years as needed
+    const dogYearLengths = [52, 52, 52, 52, 52, 52, 53];
 
     let dayCount = 0;
     for (let i = 0; i < dogYearLengths.length; i++) {
@@ -26,6 +26,10 @@ function humanToDogZodiac(date) {
             return { year: i + 1, day: daysPassed - (dayCount - dogYearLengths[i]) + 1 };
         }
     }
+}
+
+function isLeapYear(year) {
+    return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
 }
 
 function ordinalSuffix(day) {
