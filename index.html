@@ -2,36 +2,41 @@
 <html>
 <head>
     <title>Dog Age & Zodiac Converter</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel=“stylesheet” type=“text/css” href=“style.css”>
 </head>
-<body onload="showCurrentDogDate()">
-    <div class="container">
-        <img src="logo.jpeg" alt="Logo" class="logo">
-        <p id="currentDogDate" class="current-date"></p> <!-- Display current dog date -->
+<body onload=“showCurrentDogDate()”>
+    <div class=“container”>
+        <img src=“logo.jpeg” alt=“Logo” class=“logo”>
+        <p id=“currentDogDate” class=“current-date”></p> <!— Display current dog date —>
         <h2>Dog Age & Zodiac Converter</h2>
-        <p>Welcome to the Dog Age & Zodiac Converter. This tool helps you convert your dog's age into human years and reveals their position in the dog zodiac cycle. Our converter takes into account the unique pattern of dog years, where each year is usually 52 days long, except for the last year of the cycle, which is 53 days.</p>
-        
-        <label for="dogName">Dog's Name (optional):</label><br>
-        <input type="text" id="dogName" name="dogName"><br>
+        <p>Welcome to the Dog Age & Zodiac Converter. This journey offers a profound insight into the passage of time in a dog’s life, fostering a deeper bond:</p>
+        <ul>
+            <li>Experience the world through their eyes, where each year for us unfolds as seven for them. This natural rhythm brings us closer to their experience, allowing us to celebrate and honor each of their birthdays with the reverence it deserves, every 52 days.</li>
+            <li>Through the dog zodiac, we gain insight into the distinct cycle of time as experienced by dogs, acknowledging their unique place and significance in the tapestry of life.</li>
+        </ul>
+        <p>Embrace this opportunity to connect with and celebrate every moment of your dog’s life, enriching the shared journey with reverence and joy.</p>
 
-        <label for="dogBirthday">Dog's Birthday (MM-DD-YYYY):</label><br>
-        <input type="text" id="dogBirthday" name="dogBirthday"><br>
+        <label for=“dogName”>Dog’s Name (optional):</label><br>
+        <input type=“text” id=“dogName” name=“dogName”><br>
 
-        <button type="button" id="togglePassingDate">Add Date of Dog's Passing</button><br>
+        <label for=“dogBirthday”>Dog’s Birthday (MM-DD-YYYY):</label><br>
+        <input type=“text” id=“dogBirthday” name=“dogBirthday”><br>
 
-        <div id="passingDateField" style="display:none;">
-            <label for="dogPassingDate">Date of Dog's Passing (optional, MM-DD-YYYY):</label><br>
-            <input type="text" id="dogPassingDate" name="dogPassingDate"><br>
+        <button type=“button” id=“togglePassingDate”>Add Date of Dog’s Passing</button><br>
+
+        <div id=“passingDateField” style=“display:none;”>
+            <label for=“dogPassingDate”>Date of Dog’s Passing (optional, MM-DD-YYYY):</label><br>
+            <input type=“text” id=“dogPassingDate” name=“dogPassingDate”><br>
         </div>
 
-        <button onclick="calculateDogInfo()">Calculate</button><br><br>
+        <button onclick=“calculateDogInfo()”>Calculate</button><br><br>
 
-        <p id="zodiacResult"></p>
-        <p id="ageResult"></p>
-        <p id="dogAgeInDogYears"></p>
-        <p id="nextDogBirthday"></p>
+        <p id=“zodiacResult”></p>
+        <p id=“ageResult”></p>
+        <p id=“dogAgeInDogYears”></p>
+        <p id=“nextDogBirthday”></p>
 
-        <div id="dogZodiacInfo">
+        <div id=“dogZodiacInfo”>
             <h3>Dog Zodiac Year Information</h3>
             <ul>
                 <li><b>The Adventurer:</b> Jan 1 - Feb 21</li>
@@ -45,9 +50,9 @@
         </div>
     </div>
 
-    <!-- JavaScript files -->
-    <script src="dateUtils.js"></script>
-    <script src="uiHandlers.js"></script>
-    <script src="main.js"></script>
+    <!— JavaScript files —>
+    <script src=“dateUtils.js”></script>
+    <script src=“uiHandlers.js”></script>
+    <script src=“main.js”></script>
 </body>
 </html>
