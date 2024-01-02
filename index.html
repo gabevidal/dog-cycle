@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html>
 <head>
     <title>Dog Age & Zodiac Converter</title>
@@ -9,12 +9,26 @@
     <div class="container">
         <img src="logo.jpeg" alt="Logo" class="logo">
         <h2>Dog Age & Zodiac Converter</h2>
-        <p>Welcome to the Dog Age & Zodiac Converter. This tool helps you convert your dog's age into human years and reveals their position in the dog zodiac cycle. Our converter takes into account the unique pattern of dog years, where each year is usually 52 days long, except for the last year of the cycle, which is 53 days. In leap years, this extends to 54 days.</p>
+        <p>Welcome to the Dog Age & Zodiac Converter. This tool helps you convert your dog's age into human years and reveals their position in the dog zodiac cycle. Our converter takes into account the unique pattern of dog years, where each year is usually 52 days long, except for the last year of the cycle, which is 53 days.</p>
         <label for="dogBirthday">Enter your dog's birthday (MM-DD-YYYY):</label><br>
         <input type="text" id="dogBirthday" name="dogBirthday"><br>
         <button onclick="calculateDogInfo()">Calculate</button><br><br>
         <p id="zodiacResult"></p>
         <p id="ageResult"></p>
+        
+        <!-- Dog Zodiac Information -->
+        <div id="dogZodiacInfo">
+            <h3>Dog Zodiac Year Information</h3>
+            <ul>
+                <li><b>Year A (The Adventurer):</b> Jan 1 - Feb 21</li>
+                <li><b>Year B (The Braveheart):</b> Feb 22 - Apr 14</li>
+                <li><b>Year C (The Companion):</b> Apr 15 - Jun 5</li>
+                <li><b>Year D (The Dreamer):</b> Jun 6 - Jul 28</li>
+                <li><b>Year E (The Explorer):</b> Jul 29 - Sep 19</li>
+                <li><b>Year F (The Faithful):</b> Sep 20 - Nov 10</li>
+                <li><b>Year G (The Guardian):</b> Nov 11 - Dec 31</li>
+            </ul>
+        </div>
     </div>
 </body>
 </html>
