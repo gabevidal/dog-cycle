@@ -101,4 +101,4 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("togglePassingDate").addEventListener("click", togglePassingDateField);
 });
 
-console.log("JavaScript end.");d.");
+console.log("JavaScript end.");
