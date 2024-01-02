@@ -78,9 +78,15 @@ function calculateDogInfo() {
     const birthZodiacText = `${dogName} was born on the ${birthDayOrdinal} day of the ${yearName} year in the cycle.`;
     const ageText = `${dogName} is ${ageInDogYears} dog years and ${ageInDogDays} dog days old.`;
 
-    const nextDogYear = (zodiacInfo.year % 7) + 1; // Assuming a 7-year cycle
-    const nextYearName = yearNames[nextDogYear - 1];
-    const nextBirthdayText = `The next birthday of ${dogName} in dog years will be in the year ${nextYearName}.`;
+    // Calculate days until next birthday
+    let nextBirthday = new Date(dogBirthday.getTime());
+    nextBirthday.setFullYear(today.getFullYear());
+    if (nextBirthday < today) {
+        nextBirthday.setFullYear(today.getFullYear() + 1);
+    }
+    const daysUntilNextBirthday = Math.ceil((nextBirthday - today) / (1000 * 60 * 60 * 24));
+    
+    const nextBirthdayText = `The next birthday of ${dogName} in dog years will be in ${daysUntilNextBirthday} days.`;
 
     document.getElementById("zodiacResult").innerHTML = birthZodiacText;
     document.getElementById("ageResult").innerHTML = ageText;
@@ -92,7 +98,11 @@ function showCurrentDogDate() {
     const currentZodiacInfo = humanToDogZodiac(today);
     if (currentZodiacInfo) {
         const currentDayOrdinal = ordinalSuffix(currentZodiacInfo.day);
-        document.getElementById("currentDogDate").innerHTML = `Today is the ${currentDayOrdinal} day of the ${currentZodiacInfo.year} year in the cycle.`;
+        // Make sure to use the year name
+        const yearNames = ["The Adventurer", "The Braveheart", "The Companion", "The Dreamer", "The Explorer", "The Faithful", "The Guardian"];
+        const yearName = yearNames[(currentZodiacInfo.year - 1) % yearNames.length];
+
+        document.getElementById("currentDogDate").innerHTML = `Today is the ${currentDayOrdinal} day of ${yearName}.`;
     }
 }
 
