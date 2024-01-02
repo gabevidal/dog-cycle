@@ -19,26 +19,22 @@ function calculateDogInfo() {
     const ageInDogDays = ageInDays % 52;
 
     const zodiacInfo = humanToDogZodiac(dogBirthday);
-
-    // Map of year numbers to names
+    const nextDogYear = (zodiacInfo.year % 7) + 1; // Cycle through 7 dog years
     const yearNames = ["The Adventurer", "The Braveheart", "The Companion", "The Dreamer", "The Explorer", "The Faithful", "The Guardian"];
-    const yearName = yearNames[(zodiacInfo.year - 1) % yearNames.length];
+    const nextYearName = yearNames[nextDogYear - 1];
 
-    // Calculate the next dog birthday
-    const nextDogYear = (zodiacInfo.year % 7) + 1; // Assuming a 7-year cycle
-    const daysInYear = (nextDogYear === 1 && ageInDogYears > 0) ? 366 : 365; // Considering leap year in dog years
+    // Calculate the date for the next dog birthday
     let nextDogBirthday = new Date(dogBirthday.getTime());
-    nextDogBirthday.setDate(dogBirthday.getDate() + daysInYear);
+    nextDogBirthday.setFullYear(dogBirthday.getFullYear() + ageInDogYears + (zodiacInfo.year === 7 ? 1 : 0));
 
-    if (nextDogBirthday < today) {
-        nextDogBirthday.setDate(nextDogBirthday.getDate() + 365);
+    // Adjust for the next birthday if it's already passed in this year
+    if (nextDogBirthday <= today) {
+        nextDogBirthday.setFullYear(nextDogBirthday.getFullYear() + 1);
     }
 
     const daysUntilNextDogBirthday = Math.ceil((nextDogBirthday - today) / (1000 * 60 * 60 * 24));
-
-    const nextYearName = yearNames[nextDogYear - 1];
-    const nextBirthdayText = `The next birthday of ${dogName} will be on the ${ordinalSuffix(zodiacInfo.day)} day of the ${nextYearName} year in the cycle, which is in ${daysUntilNextDogBirthday} days.`;
-
-    document.getElementById("zodiacResult").innerHTML = `${dogName} was born on the ${ordinalSuffix(zodiacInfo.day)} day of the ${yearName} year in the cycle.`;
-    document.getElementById("nextDogBirthday").innerHTML = nextBirthdayText;
+    
+    // Display the results
+    document.getElementById("zodiacResult").innerHTML = `${dogName} was born on the ${ordinalSuffix(zodiacInfo.day)} day of the ${yearNames[zodiacInfo.year - 1]} year in the cycle.`;
+    document.getElementById("nextDogBirthday").innerHTML = `The next birthday of ${dogName} will be on the ${ordinalSuffix(zodiacInfo.day)} day of the ${nextYearName} year in the cycle, which is in ${daysUntilNextDogBirthday} days.`;
 }
