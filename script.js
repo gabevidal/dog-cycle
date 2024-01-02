@@ -20,7 +20,6 @@ function humanToDogZodiac(date) {
     const startOfYear = new Date(date.getFullYear(), 0, 1);
     const daysPassed = Math.floor((date - startOfYear) / (1000 * 60 * 60 * 24));
 
-    // Dog year data
     const dogYearData = [
         { name: "The Adventurer", length: 52 },
         { name: "The Braveheart", length: 52 },
@@ -35,18 +34,41 @@ function humanToDogZodiac(date) {
     for (let i = 0; i < dogYearData.length; i++) {
         dayCount += dogYearData[i].length;
         if (daysPassed < dayCount) {
-            return { yearName: dogYearData[i].name, day: daysPassed - (dayCount - dogYearData[i].length) };
+            return { yearName: dogYearData[i].name, day: daysPassed - (dayCount - dogYearData[i].length) + 1 };
         }
+    }
+}
+
+function ordinalSuffix(day) {
+    const j = day % 10, k = day % 100;
+    if (j == 1 && k != 11) {
+        return day + "st";
+    }
+    if (j == 2 && k != 12) {
+        return day + "nd";
+    }
+    if (j == 3 && k != 13) {
+        return day + "rd";
+    }
+    return day + "th";
+}
+
+function togglePassingDateField() {
+    var passingDateField = document.getElementById("passingDateField");
+    if (passingDateField.style.display === "none") {
+        passingDateField.style.display = "block";
+    } else {
+        passingDateField.style.display = "none";
     }
 }
 
 function calculateDogInfo() {
     const dogName = document.getElementById("dogName").value || "Your dog";
     const dogBirthdayStr = document.getElementById("dogBirthday").value;
-    const dogDeathDateStr = document.getElementById("dogDeathDate").value;
+    const dogPassingDateStr = document.getElementById("dogPassingDate").value;
 
     const dogBirthday = parseDate(dogBirthdayStr);
-    const dogDeathDate = parseDate(dogDeathDateStr);
+    const dogPassingDate = parseDate(dogPassingDateStr);
 
     if (!dogBirthday) {
         document.getElementById("zodiacResult").innerHTML = "Please enter a valid birthday.";
@@ -54,12 +76,13 @@ function calculateDogInfo() {
     }
 
     const zodiacInfo = humanToDogZodiac(dogBirthday);
-    const birthZodiacText = `${dogName} was born on the ${zodiacInfo.day} day of ${zodiacInfo.yearName}.`;
+    const birthDayOrdinal = ordinalSuffix(zodiacInfo.day);
+    const birthZodiacText = `${dogName} was born on the ${birthDayOrdinal} day of the year ${zodiacInfo.yearName}.`;
 
-    const endDate = dogDeathDate || new Date();
+    const endDate = dogPassingDate || new Date();
     const ageInDays = Math.floor((endDate - dogBirthday) / (1000 * 60 * 60 * 24));
     const ageInHumanYears = Math.floor(ageInDays / 365);
-    const ageResultText = dogDeathDate ? 
+    const ageResultText = dogPassingDate ? 
         `${dogName} lived for ${ageInHumanYears} human years.` :
         `${dogName} is ${ageInHumanYears} human years old.`;
 
@@ -71,10 +94,14 @@ function showCurrentDogDate() {
     const today = new Date();
     const currentZodiacInfo = humanToDogZodiac(today);
     if (currentZodiacInfo) {
-        document.getElementById("currentDogDate").innerHTML = `Today is the ${currentZodiacInfo.day} day of ${currentZodiacInfo.yearName}.`;
+        const currentDayOrdinal = ordinalSuffix(currentZodiacInfo.day);
+        document.getElementById("currentDogDate").innerHTML = `Today is the ${currentDayOrdinal} day of the year ${currentZodiacInfo.yearName}.`;
     }
 }
 
-window.onload = showCurrentDogDate;
+window.onload = function() {
+    showCurrentDogDate();
+    document.getElementById("togglePassingDate").addEventListener("click", togglePassingDateField);
+};
 
 console.log("JavaScript end.");
