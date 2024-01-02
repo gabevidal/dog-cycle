@@ -1,21 +1,31 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Dog Age & Zodiac Converter</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="script.js"></script>
 </head>
-<body>
+<body onload="showCurrentDogDate()">
     <div class="container">
         <img src="logo.jpeg" alt="Logo" class="logo">
         <h2>Dog Age & Zodiac Converter</h2>
-        <p>Welcome to the Dog Age & Zodiac Converter. This tool helps you convert your dog's age into human years and reveals their position in the dog zodiac cycle. Our converter takes into account the unique pattern of dog years, where each year is usually 52 days long, except for the last year of the cycle, which is 53 days.</p>
-        <label for="dogBirthday">Enter your dog's birthday (MM-DD-YYYY):</label><br>
+        <p>Discover your dog's age in the mystical dog zodiac cycle.</p>
+        
+        <label for="dogName">Dog's Name (optional):</label><br>
+        <input type="text" id="dogName" name="dogName"><br>
+
+        <label for="dogBirthday">Dog's Birthday (MM-DD-YYYY):</label><br>
         <input type="text" id="dogBirthday" name="dogBirthday"><br>
+
+        <label for="dogDeathDate">Dog's Death Date (optional, MM-DD-YYYY):</label><br>
+        <input type="text" id="dogDeathDate" name="dogDeathDate"><br>
+
         <button onclick="calculateDogInfo()">Calculate</button><br><br>
+
+        <p id="currentDogDate"></p>
         <p id="zodiacResult"></p>
         <p id="ageResult"></p>
-        
+
         <!-- Dog Zodiac Information -->
         <div id="dogZodiacInfo">
             <h3>Dog Zodiac Year Information</h3>
