@@ -1,6 +1,16 @@
 function parseDate(input) {
-    var parts = input.match(/(\\d+)/g);
-    return new Date(parts[2], parts[0]-1, parts[1]);
+    if (!input) {
+        console.error('No input provided for parseDate.');
+        return new Date(); // or handle the error as needed
+    }
+
+    var parts = input.match(/(\\d{1,2})-(\\d{1,2})-(\\d{4})/);
+    if (!parts) {
+        console.error('Invalid date format. Expected MM-DD-YYYY or M-D-YYYY.');
+        return new Date(); // or handle the error as needed
+    }
+
+    return new Date(parts[3], parts[1] - 1, parts[2]);
 }
 
 function humanToDogZodiac(humanDateStr) {
