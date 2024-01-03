@@ -2,6 +2,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box; /* Ensures padding doesn't affect overall width */
 }
 
 body {
@@ -9,6 +10,7 @@ body {
     color: #333;
     background-color: #ffffff;
     text-align: center;
+    line-height: 1.6; /* Increased line height for better readability */
 }
 
 .header-image {
@@ -24,14 +26,18 @@ body {
     padding: 0 20px;
 }
 
+/* Normalize title fonts */
 h1, h2, h3 {
     color: #333;
     font-weight: normal;
-    font-size: 30px;
+    font-size: 24px; /* Standardized font size for titles */
+    margin-bottom: 15px; /* Added space below titles */
 }
 
-p, label {
-    font-size: 18px;
+/* Normalize body fonts */
+p, label, input[type="text"], button, #dogZodiacInfo li {
+    font-size: 18px; /* Standardized font size for body text */
+    margin-bottom: 10px; /* Added space below each element */
 }
 
 input[type="text"], button {
@@ -40,8 +46,7 @@ input[type="text"], button {
     margin-top: 15px;
     border: 1px solid #ddd;
     border-radius: 6px;
-    box-sizing: border-box;
-    font-size: 20px;
+    font-size: 18px; /* Align with body font size */
 }
 
 button {
@@ -50,7 +55,6 @@ button {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s;
-    font-size: 22px;
 }
 
 button:hover {
@@ -64,13 +68,11 @@ button:hover {
     margin-top: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'Georgia', serif;
 }
 
 #dogZodiacInfo h3 {
     color: #007aff;
     margin-bottom: 15px;
-    font-size: 28px;
 }
 
 #dogZodiacInfo ul {
@@ -84,7 +86,6 @@ button:hover {
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    font-size: 18px;
 }
 
 #dogZodiacInfo li b {
@@ -99,11 +100,13 @@ button:hover {
     .container {
         padding: 15px;
     }
+
     h1, h2, h3 {
-        font-size: 32px;
+        font-size: 28px; /* Slightly larger font size for mobile titles */
     }
+
     p, label, input[type="text"], button, #dogZodiacInfo li {
-        font-size: 20px;
+        font-size: 16px; /* Slightly larger font size for mobile body text */
     }
 }
 
