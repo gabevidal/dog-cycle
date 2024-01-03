@@ -2,7 +2,7 @@ function loadHTML(url, id, callback) {
     fetch(url)
     .then(response => response.text())
     .then(data => {
-        document.getElementById(id).innerHTML += data;
+        document.getElementById(id).innerHTML = data;  // Replace the inner HTML
         if (callback) {
             callback();
         }
@@ -11,13 +11,13 @@ function loadHTML(url, id, callback) {
 }
 
 function loadSections() {
-    loadHTML('headerSection.html', 'mainContainer', function() {
+    loadHTML('headerSection.html', 'headerSection', function() {
         // Callback after header section is loaded, if needed
     });
-    loadHTML('calendarReadingSection.html', 'mainContainer', function() {
+    loadHTML('calendarReadingSection.html', 'calendarReadingSection', function() {
         // Callback after calendar reading section is loaded, if needed
     });
-    loadHTML('dogZodiacInfoSection.html', 'mainContainer', setUpEventListeners);
+    loadHTML('dogZodiacInfoSection.html', 'dogZodiacInfoSection', setUpEventListeners);
 }
 
 function setUpEventListeners() {
